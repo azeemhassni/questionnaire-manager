@@ -16,7 +16,7 @@ class CreateChoicesTable extends Migration
         Schema::create('choices', function (Blueprint $table) {
             $table->increments('id');
             $table->string('choice');
-            $table->boolean('is_correct');
+            $table->boolean('is_correct')->default(false);
             $table->integer('question_id')->unsigned();
             $table->timestamps();
         });

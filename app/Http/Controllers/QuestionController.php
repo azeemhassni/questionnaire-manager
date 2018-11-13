@@ -39,9 +39,21 @@ class QuestionController extends Controller
     public function store(Questionnaire $questionnaire, Request $request)
     {
 
-        $questionnaire->questions()->createMany($request->get('questions'));
-        
-        dd($questionnaire->toJson());
+        foreach ($request->get('questions') as $question) {
+            $question = collect($question); // just to ge the Collection helpers
+
+            // save the question with choices
+            $model = $questionnaire->questions()
+                ->create($question->toArray());
+
+
+            if ($question->contains('type', 'MCSO') || $question->contains('type', 'MCMO')) {
+                $model->choices()->createMany($question['choices']);
+            }
+
+        }
+
+        return redirect()->route('questionnaire.index')->with(['message' => 'Questions has been added successfully']);
     }
 
     /**
