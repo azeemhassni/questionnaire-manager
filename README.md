@@ -13,3 +13,8 @@ git clone https://github.com/azeemhassni/questionnaire-manager.git
 ```bash
 cd questionnaire-manager && composer install && yarn && yarn build
 ```
+
+### Migrate and Seed the Database
+```bash
+php artisan migrate --seed
+````
