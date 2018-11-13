@@ -25,4 +25,20 @@ class QuestionnaireController extends Controller
 
         return redirect()->route('questionnaire.index')->with(['message' => 'The questionnaire was created successfully']);
     }
+
+    public function edit(Questionnaire $questionnaire)
+    {
+        return view('questionnaire.edit')->with(compact('questionnaire'));
+    }
+
+    public function update()
+    {
+
+    }
+
+    public function destory(Questionnaire $questionnaire)
+    {
+        $questionnaire->delete();
+        return redirect()->route('questionnaire.index')->with(['message' => 'Questionnaire was deleted successfully']);
+    }
 }

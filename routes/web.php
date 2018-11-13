@@ -21,13 +21,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::resource('questionnaire', 'QuestionnaireController')->only([
-        'index',
-        'create',
-        'store'
-    ]);
+    Route::resource('questionnaire', 'QuestionnaireController');
 
-    Route::resource('question', 'QuestionController')->only([
+    Route::resource('{questionnaire}/question', 'QuestionController')->only([
         'create',
         'store'
     ]);

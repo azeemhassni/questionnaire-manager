@@ -10,8 +10,8 @@
 
                     <div class="card-body">
 
-                        <form method="POST" action="{{ route('questionnaire.store') }}">
-                            @include('questionnaire._form', ['questionnaire' => null])
+                        <form method="POST" action="{{ route('questionnaire.update', $questionnaire) }}">
+                            @include('questionnaire._form')
                         </form>
 
                     </div>

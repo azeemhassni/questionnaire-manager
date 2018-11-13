@@ -30,12 +30,29 @@
                                 <tr>
                                     <td>{{ $questionnaire->id }}</td>
                                     <td>{{ $questionnaire->name }}</td>
-                                    <td>{{ $questionnaire->questions_count }} | <a
-                                                href="{{ route('question.create') }}">Add</a></td>
+                                    <td>
+                                        {{ $questionnaire->questions_count }} |
+                                        <a href="{{ route('question.create', $questionnaire) }}">Add</a>
+                                    </td>
                                     <td>{{  $questionnaire->duration }} {{ $questionnaire->time_in }}</td>
-                                    <td>{{ $questionnaire->can_resume ? 'Yes' : 'No' }}</td>
-                                    <td>{{ $questionnaire->is_published ? 'Yes' : 'No' }}</td>
-                                    <td>- {{--  :) --}}</td>
+                                    <td>{{ $questionnaire->yn_can_resume }}</td>
+                                    <td>{{ $questionnaire->yn_is_published }}</td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col"><a class="btn btn-dark"
+                                                                href="{{ route('questionnaire.edit', $questionnaire) }}">Edit</a>
+                                            </div>
+                                            <div class="col">
+                                                @component('components.delete_action', [
+                                                'action' =>   route('questionnaire.destroy', $questionnaire),
+                                                'method' => 'DELETE'
+                                                ])
+                                                @endcomponent
+                                            </div>
+                                        </div>
+
+
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>

@@ -13,4 +13,15 @@ class Questionnaire extends Model
         return $this->hasMany(Question::class);
     }
 
+
+    public function getYNCanResumeAttribute()
+    {
+        return $this->attributes['can_resume'] ? 'Yes' : 'No';
+    }
+
+    public function getYNIsPublishedAttribute()
+    {
+        return $this->attributes['is_published'] ? 'Yes' : 'No';
+    }
+
 }
