@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateQuestionnaireRequest;
+use App\Question;
 use App\Questionnaire;
 use Illuminate\Http\Request;
 

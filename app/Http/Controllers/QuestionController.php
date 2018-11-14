@@ -31,14 +31,12 @@ class QuestionController extends Controller
     {
 
         foreach ($request->get('questions') as $question) {
-            $question = collect($question); // just to ge the Collection helpers
 
             // save the question with choices
             $model = $questionnaire->questions()
-                ->create($question->toArray());
+                ->create($question);
 
-
-            if ($question->contains('type', 'MCSO') || $question->contains('type', 'MCMO')) {
+            if (in_array($question['type'], ['MCMO', 'MCSO'])) {
                 $model->choices()->createMany($question['choices']);
             }
 

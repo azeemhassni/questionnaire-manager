@@ -12,4 +12,9 @@ class Choice extends Model
     {
         return $this->belongsTo(Question::class);
     }
+
+    public function setIsCorrectAttribute($value)
+    {
+        $this->attributes['is_correct'] = $value === "on";
+    }
 }
