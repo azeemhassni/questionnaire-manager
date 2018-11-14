@@ -11,6 +11,7 @@
                     <div class="card-body">
 
                         <form method="POST" action="{{ route('questionnaire.update', $questionnaire) }}">
+                            {{ method_field('PATCH') }}
                             @include('questionnaire._form')
                         </form>
 

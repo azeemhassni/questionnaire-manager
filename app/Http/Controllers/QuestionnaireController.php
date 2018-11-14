@@ -31,9 +31,10 @@ class QuestionnaireController extends Controller
         return view('questionnaire.edit')->with(compact('questionnaire'));
     }
 
-    public function update()
+    public function update(Questionnaire $questionnaire, CreateQuestionnaireRequest $request)
     {
-
+        $questionnaire->update($request->all());
+        return redirect()->route('questionnaire.index')->with(['message' => 'Questionnaire was updated successfully']);
     }
 
     public function destory(Questionnaire $questionnaire)
